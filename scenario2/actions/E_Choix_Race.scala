@@ -12,14 +12,12 @@ object E_Choix_Race {
     "Sec-Fetch-User" -> "?1",
     "Upgrade-Insecure-Requests" -> "1"
   )
-  val choix_race: ChainBuilder = {
-    group("240_Choix_race"){
-      exec(
-        http("/actions/Catalog.action?viewProduct=&productId=#{ProductId}")
-        .get("/actions/Catalog.action?viewProduct=&productId=#{ProductId}")
-        .check(regex("itemId=(.*?)\"").findRandom.saveAs("ItemId"))
-        .headers(headers_3),
-      )
-    }
+  val choix_race: ChainBuilder = group("240_Choix_race"){
+    exec(
+      http("/actions/Catalog.action?viewProduct=&productId=#{ProductId}")
+      .get("/actions/Catalog.action?viewProduct=&productId=#{ProductId}")
+      .check(regex("itemId=(.*?)\"").findRandom.saveAs("ItemId"))
+      .headers(headers_3),
+    )
   }
 }

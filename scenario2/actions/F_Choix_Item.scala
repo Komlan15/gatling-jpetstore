@@ -13,12 +13,10 @@ object F_Choix_Item {
     "Upgrade-Insecure-Requests" -> "1"
   )
 
-  val choix_item: ChainBuilder = {
-    group("250_Choix_item"){
-      exec(http("/actions/Catalog.action?viewItem=&itemId=#{ItemId}")
-        .get("/actions/Catalog.action?viewItem=&itemId=#{ItemId}")
-        .headers(headers_3),
-      )
-    }
+  val choix_item: ChainBuilder = group("250_Choix_item"){
+    exec(http("/actions/Catalog.action?viewItem=&itemId=#{ItemId}")
+      .get("/actions/Catalog.action?viewItem=&itemId=#{ItemId}")
+      .headers(headers_3),
+    )
   }
 }

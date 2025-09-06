@@ -6,7 +6,7 @@ import io.gatling.core.structure.ScenarioBuilder
 class Test_Unitaire_SC01 extends Simulation{
 
   private val httpProtocol = http
-    .baseUrl("https://petstore.octoperf.com")
+    .baseUrl("http://jpetstore.local:30430")
     .disableCaching // Désactivation du cache
     .inferHtmlResources()
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8")

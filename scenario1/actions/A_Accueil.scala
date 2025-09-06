@@ -15,18 +15,17 @@ object A_Accueil {
 
   )
 
-  val Accueil: ChainBuilder =
-    group("100_Acceuill") {
-      exec(
-        http("/actions/Catalog.action")
-           .get("/actions/Catalog.action")
-           .check(
-               headerRegex("set-cookie", "JSESSIONID=(.*?);")
-               .ofType[String]
-               .saveAs("jsessionid")
-            )
-          .headers(headers_0)
-      )
+  val Accueil: ChainBuilder = group("100_Acceuill") {
+    exec(
+      http("/actions/Catalog.action")
+          .get("/actions/Catalog.action")
+          .check(
+              headerRegex("set-cookie", "JSESSIONID=(.*?);")
+              .ofType[String]
+              .saveAs("jsessionid")
+          )
+        .headers(headers_0)
+    )
 
-    }
+  }
 }

@@ -13,13 +13,11 @@ object G_Add_Cart {
     "Upgrade-Insecure-Requests" -> "1"
   )
 
-  val Add_cart: ChainBuilder = {
-    group("160_Add_cart"){
-      exec(
-        http("/actions/Cart.action?addItemToCart=&workingItemId=#{ItemId}")
-        .get("/actions/Cart.action?addItemToCart=&workingItemId=#{ItemId}")
-        .headers(headers_3),
-      )
-    }
+  val Add_cart: ChainBuilder = group("160_Add_cart"){
+    exec(
+      http("/actions/Cart.action?addItemToCart=&workingItemId=#{ItemId}")
+      .get("/actions/Cart.action?addItemToCart=&workingItemId=#{ItemId}")
+      .headers(headers_3)
+    )
   }
 }

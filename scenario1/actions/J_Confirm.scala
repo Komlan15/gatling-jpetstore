@@ -13,13 +13,11 @@ object J_Confirm {
     "Upgrade-Insecure-Requests" -> "1"
   )
 
-  val Confirm: ChainBuilder = {
-    group("190_Confirm"){
-      exec(
-        http("/actions/Order.action?newOrder=&confirmed=true")
-          .get("/actions/Order.action?newOrder=&confirmed=true")
-          .headers(headers_3),
-      )
-    }
+  val Confirm: ChainBuilder = group("190_Confirm"){
+    exec(
+      http("/actions/Order.action?newOrder=&confirmed=true")
+        .get("/actions/Order.action?newOrder=&confirmed=true")
+        .headers(headers_3)
+    )
   }
 }

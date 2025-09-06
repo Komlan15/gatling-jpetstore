@@ -15,14 +15,12 @@ object D_ChoixAnimaux {
     "Sec-Fetch-User" -> "?1",
     "Upgrade-Insecure-Requests" -> "1"
   )
-  val choix_animaux: ChainBuilder = {
-    group("330_Choix_animaux"){
-      exec(
-        http("/actions/Catalog.action?viewCategory=&categoryId=#{categorieId}")
-        .get("/actions/Catalog.action?viewCategory=&categoryId=#{categorieId}")
-        .check(regex("productId=(.*?)\"").findRandom.saveAs("ProductId"))
-        .headers(headers_3),
-      )
-    }
+  val choix_animaux: ChainBuilder = group("330_Choix_animaux"){
+    exec(
+      http("/actions/Catalog.action?viewCategory=&categoryId=#{categorieId}")
+      .get("/actions/Catalog.action?viewCategory=&categoryId=#{categorieId}")
+      .check(regex("productId=(.*?)\"").findRandom.saveAs("ProductId"))
+      .headers(headers_3),
+    )
   }
 }

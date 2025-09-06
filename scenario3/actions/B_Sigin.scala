@@ -13,15 +13,13 @@ object B_Sigin {
     "Sec-Fetch-User" -> "?1",
     "Upgrade-Insecure-Requests" -> "1"
   )
-  val sigin: ChainBuilder = {
-    group("310_Sigin"){
-      exec(
-        http("/actions/Account.action;jsessionid=jsessionid?signonForm=")
-        .get("/actions/Account.action;jsessionid=#{jsessionid}?signonForm=")
-        .check(regex("sourcePage\" value=\"(.*?)\"").saveAs("sourcepage"))
-        .check(regex("fp\" value=\"(.*?)\"").saveAs("fp"))
-        .headers(headers_3),
-      )
-    }
+  val sigin: ChainBuilder = group("310_Sigin"){
+    exec(
+      http("/actions/Account.action;jsessionid=jsessionid?signonForm=")
+      .get("/actions/Account.action;jsessionid=#{jsessionid}?signonForm=")
+      .check(regex("sourcePage\" value=\"(.*?)\"").saveAs("sourcepage"))
+      .check(regex("fp\" value=\"(.*?)\"").saveAs("fp"))
+      .headers(headers_3),
+    )
   }
 }

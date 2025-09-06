@@ -14,18 +14,16 @@ object A_Accueil {
     "Upgrade-Insecure-Requests" -> "1"
   )
 
-  val accueil: ChainBuilder = {
-    group("300_Acceuill"){
-      exec(
-        http("/actions/Catalog.action")
-        .get("/actions/Catalog.action")
-        .check(
-          headerRegex("set-cookie", "JSESSIONID=(.*?);")
-            .ofType[String]
-            .saveAs("jsessionid")
-        )
-        .headers(headers_0),
+  val accueil: ChainBuilder =  group("300_Acceuill"){
+    exec(
+      http("/actions/Catalog.action")
+      .get("/actions/Catalog.action")
+      .check(
+        headerRegex("set-cookie", "JSESSIONID=(.*?);")
+          .ofType[String]
+          .saveAs("jsessionid")
       )
-    }
+      .headers(headers_0),
+    )
   }
 }

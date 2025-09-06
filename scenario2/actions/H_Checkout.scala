@@ -13,13 +13,11 @@ object H_Checkout {
     "Upgrade-Insecure-Requests" -> "1"
   )
 
-  val checkout: ChainBuilder = {
-    group("270_Checkout"){
-      exec(
-        http("/actions/Order.action?newOrderForm=")
-        .get("/actions/Order.action?newOrderForm=")
-        .headers(headers_3),
-      )
-    }
+  val checkout: ChainBuilder = group("270_Checkout"){
+    exec(
+      http("/actions/Order.action?newOrderForm=")
+      .get("/actions/Order.action?newOrderForm=")
+      .headers(headers_3),
+    )
   }
 }

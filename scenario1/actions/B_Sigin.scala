@@ -15,15 +15,13 @@ object B_Sigin {
     "Upgrade-Insecure-Requests" -> "1"
   )
 
-  val Sigin: ChainBuilder = {
-    group("110_Sigin"){
-      exec(
-        http("/actions/Account.action;jsessionid=jsessionid?signonForm=")
-        .get("/actions/Account.action;jsessionid=#{jsessionid}?signonForm=")
-        .check(regex("sourcePage\" value=\"(.*?)\"").saveAs("sourcepage"))
-        .check(regex("fp\" value=\"(.*?)\"").saveAs("fp"))
-        .headers(headers_3),
-      )
-    }
+  val Sigin: ChainBuilder = group("110_Sigin") {
+    exec(
+      http("/actions/Account.action;jsessionid=jsessionid?signonForm=")
+      .get("/actions/Account.action;jsessionid=#{jsessionid}?signonForm=")
+      .check(regex("sourcePage\" value=\"(.*?)\"").saveAs("sourcepage"))
+      .check(regex("fp\" value=\"(.*?)\"").saveAs("fp"))
+      .headers(headers_3)
+    )
   }
 }

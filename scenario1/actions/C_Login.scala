@@ -15,23 +15,22 @@ object C_Login {
     "Sec-Fetch-User" -> "?1",
     "Upgrade-Insecure-Requests" -> "1"
   )
-  val compteusers: FeederBuilder = csv("users.csv").random
+  val compteusers = csv("resources-jpetstore-gatling/users.csv").random
 
-  val Login: ChainBuilder = {
-    group("120_Login"){
-      exec(
-        feed(compteusers),
-        http("/actions/Account.action")
-          .post("/actions/Account.action")
-          .headers(headers_4)
-          .formParam("username", "#{Identifiant}")
-          .formParam("password", "#{Password}")
-          .formParam("signon", "Login")
-          .formParam("_sourcePage", "#{sourcepage}")
-          .formParam("__fp", "#{fp}")
-          .check(regex("categoryId=(.*?)\"").findRandom.saveAs("categorieId"))
+  val Login: ChainBuilder = group("120_Login") {
+    feed(compteusers)
+    .exec(
+      http("/actions/Account.action")
+        .post("/actions/Account.action")
+        .headers(headers_4)
+        .formParam("username", "#{Identifiant}")
+        .formParam("password", "#{Password}")
+        .formParam("signon", "Login")
+        .formParam("_sourcePage", "#{sourcepage}")
+        .formParam("__fp", "#{fp}")
+        .check(regex("categoryId=(.*?)\"").findRandom.saveAs("categorieId"))
 
-      )
-    }
+    )
+    
   }
 }
