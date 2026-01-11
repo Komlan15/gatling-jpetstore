@@ -17,7 +17,7 @@ class Test_Mixte_10VU_1mn extends Simulation {
   object TestMixte2 {
     val defaultLoadTest2: ScenarioBuilder =
       scenario("Default Load Test2")
-        .during(30) {
+        .during(15) {
           randomSwitch(
             60.0 -> exec(animauxscala.scenario1.Parcours1.parcours1),
             20.0 -> exec(animauxscala.scenario2.Parcours2.parcours2),
